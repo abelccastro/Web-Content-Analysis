@@ -66,6 +66,12 @@ Logo, procedemos à criação do server tomcat.
    
 </p>
 
+e modificamos a variável de entorno do tomcat.
+
+<p align="center">
+  <img height="400" src="img/server4.png">    
+   
+</p>
 
 
 
