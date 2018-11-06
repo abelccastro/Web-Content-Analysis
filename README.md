@@ -80,9 +80,10 @@ E por último, selecionamos
    
 </p>
 
+E vamos para nos browser e escrevemos a seguiente url: "http://localhost:8080/urisService/hello". Se o processo de instalação foi feito bem, então deveriamos ter a seguinte resposta.
 
 <p align="center">
-  <img height="400" src="img/run2.png">    
+  <img height="400" src="img/run3.png">    
    
 </p>
 
