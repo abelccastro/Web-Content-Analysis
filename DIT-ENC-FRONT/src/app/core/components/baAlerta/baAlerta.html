@@ -1,7 +1,0 @@
-<div #baAlerta class="mAlertas">
-    <div *ngFor="let alert of alertas">
-        <alert [type]="alert.tipo" dismissible="true" [dismissOnTimeout]="alert.tiempo">
-        	<i class="{{ alert.icono }}"></i><strong>{{ alert.titulo }}</strong>&nbsp;{{ alert.mensaje }}
-        </alert>
-    </div>
-</div>
