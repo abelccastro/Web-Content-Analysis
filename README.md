@@ -62,23 +62,27 @@ Logo, procedemos à criação do server tomcat.
 </p>
 
 <p align="center">
-  <img height="500" src="img/server3.png">    
+  <img height="400" src="img/server3.png">    
    
 </p>
 
 e modificamos a variável de entorno do tomcat.
-- clickamos no server.
-- Na tela acima, vamos ter a descrição do server, e fazemos click em "Open Launck Configuration".
-- E vamos para o tab "Arguments" e no campo VM Arguments é só agregar:
+
 <p align="center">
- -Dapp.config="/home/kai/eclipse-workspace/Web-Content-Analysis-master/uris/uris-repository-imp/src/main/resources"
+  <img height="400" src="img/server4.png">    
+   
+</p>
+
+E por último, selecionamos 
+
+<p align="center">
+  <img height="400" src="img/run.png">    
+   
 </p>
 
 
-
-
 <p align="center">
-  <img height="600" src="img/server4.png">    
+  <img height="400" src="img/run2.png">    
    
 </p>
 
