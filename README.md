@@ -49,6 +49,26 @@ A seguir, temos un arquivo onde fazemos a configuração para ter conetividade c
    
 </p>
 
+Logo, procedemos à criação do server tomcat.
+
+<p align="center">
+  <img height="400" src="img/server.png">    
+   
+</p>
+
+<p align="center">
+  <img height="400" src="img/server2.png">    
+   
+</p>
+
+<p align="center">
+  <img height="400" src="img/server3.png">    
+   
+</p>
+
+
+
+
 
 
 
