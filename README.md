@@ -73,7 +73,7 @@ e modificamos a variável de entorno do tomcat.
    
 </p>
 
-E por último, selecionamos 
+E por último, selecionamos o modulo URIS-RES e clickamos no butão "run" e escolhemos a opção "Run on server". 
 
 <p align="center">
   <img height="400" src="img/run.png">    
