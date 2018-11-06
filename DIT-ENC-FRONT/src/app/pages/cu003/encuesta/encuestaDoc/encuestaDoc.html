@@ -1,0 +1,140 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 col-xs-12 col-lg-12">
+            <h2 class="titulo">{{titulo}}</h2>
+        </div>
+    </div>
+    
+    <!-- <div class="row">
+        <div class="col-md-12">
+            <fieldset class="form-control">
+                <legend>Buscar Encuesta</legend>
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label class="col-md-3 col-form-label">Nombre</label>
+                        <div class="col-md-9">
+                            <input class="form-control" type="text" placeholder="Ingrese un nombre">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="col-md-3 col-form-label">Descripción</label>
+                        <div class="col-md-9">
+                            <input class=" form-control" type="text" placeholder="Ingrese una descripción">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div> -->
+    <!-- <div class="row">
+        <div class="col-md-12 col-xs-12 col-lg-12">
+            <ng2-smart-table class="table-unsa table-responsive table-center" [settings]="settingsAgrupada" [source]="sourceAgrupada"></ng2-smart-table>
+        </div>
+    </div> -->
+    <div class="row" *ngIf="resultadoEnviar == 1">
+        <div class="col-md-12"> 
+            <div class="alert alert-success" role="alert">
+                La encuesta ha sido enviada satisfactoriamente.
+            </div>
+        </div>
+        <br>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <fieldset>
+                <legend>Filtrar</legend>
+                <div class="col-md-3">
+                    <div class="form-group row">
+                        <label for="first_name" class="col-md-3 col-form-label"><b>Fase:</b></label>
+                        <div class="col-md-9">
+                            <select [(ngModel)]="filtros.idEstadoEncuesta"  class="form-control" id="exampleSelect2">
+                                <option value="-1">Todos</option>
+                                <option value="2">En Ejecución</option>
+                                <option value="3">Finalizados</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group row">
+                        <label for="first_name" class="col-md-3 col-form-label"><b>Estado:</b></label>
+                        <div class="col-md-9">
+                            <select [(ngModel)]="filtros.enviado" class="form-control" id="exampleSelect2">
+                                <option value="-1">Todos</option>
+                                <option value="0">Sin Enviar</option>
+                                <option value="1">Enviados</option>
+                                
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group row">
+                        <button style="padding: 0.5rem 0.75rem; height: 2.5rem;" class="btn btn-primary" (click)="filtrar()">Filtrar</button>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-7">
+                    <b>No Agrupadas</b>
+                </div>
+                <div class="col-md-3">   
+                    <div class="form-legend pull-right">
+                        <span tooltip='En Ejecución'><i class="fa fa-exclamation-circle mdanger "></i>En ejecución</span>
+                        <span tooltip='Finalizada'><i class="fa fa-exclamation-circle minfo "></i>Finalizada</span>
+                    </div>
+                </div>
+                <div class="col-md-2">   
+                    <div class="form-legend pull-right">
+                        <span tooltip='Enviado'><i class="fa fa-check-square-o"></i>Enviado</span>
+                        <span tooltip='Sin enviar'><i class="fa fa-square-o"></i>Sin enviar</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-block">
+            <blockquote class="card-blockquote">
+                <ng2-smart-table class="table-unsa table-responsive table-center" [settings]="settingsNoAgrupada" [source]="sourceNoAgrupada"></ng2-smart-table>
+            </blockquote>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-7">
+                    <b>Agrupadas</b>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-legend pull-right">
+                        <span tooltip='En Ejecución'><i class="fa fa-exclamation-circle mdanger "></i>En ejecución</span>
+                        <span tooltip='Finalizada'><i class="fa fa-exclamation-circle minfo "></i>Finalizada</span>
+                    </div>
+                </div>
+                <div class="col-md-2">   
+                    <div class="form-legend pull-right">
+                        <span tooltip='Enviado'><i class="fa fa-check-square-o"></i>Enviado</span>
+                        <span tooltip='Sin enviar'><i class="fa fa-square-o"></i>Sin enviar</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-block">
+            <blockquote class="card-blockquote">
+                <ng2-smart-table class="table-unsa table-responsive table-center" [settings]="settingsAgrupada" [source]="sourceAgrupada"></ng2-smart-table>
+            </blockquote>
+        </div>
+    </div>
+
+    <!-- <div class="row">
+        <div class="col-md-12 col-xs-12 col-lg-12">
+            <ng2-smart-table class="table-unsa table-responsive table-center" [settings]="settingsNoAgrupada" [source]="sourceNoAgrupada"></ng2-smart-table>
+        </div>
+    </div> -->
+</div>
+<baConfirmDialogCmp></baConfirmDialogCmp>

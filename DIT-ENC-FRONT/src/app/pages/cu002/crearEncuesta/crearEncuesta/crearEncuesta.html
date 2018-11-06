@@ -1,0 +1,82 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="titulo">{{titulo}}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form [formGroup]="formEncuesta" (ngSubmit)="onSubmit()" novalidate>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pull-right">
+                            <button class="btn btn-unsa-nuevo" (click)="abrirPublicarEncuestaModal()" [disabled]="!formEncuesta.valid">
+                                <i class="fa fa-paper-plane"></i> Publicar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row" [ngClass]="{'has-danger': !formEncuesta.controls.nombreEncuesta.valid && !formEncuesta.controls.nombreEncuesta.pristine}">
+                    <div class="col-md-2">
+                        <label for="nombreEncuesta" class="col-form-label">Nombre de la Encuesta</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control " name="nombreEncuesta" formControlName="nombreEncuesta" [ngClass]="{'form-control-danger': !formEncuesta.controls.nombreEncuesta.valid}">
+                    </div>
+                </div>
+                <div class="form-group row" [ngClass]="{'has-danger': !formEncuesta.controls.idPlantilla.valid && !formEncuesta.controls.idPlantilla.pristine}">
+                    <div class="col-md-2 ">
+                        <label for="idPlantilla" class="col-form-label">Plantilla</label>
+                    </div>
+                    <div class="col-md-7 ">
+                        <select class="form-control" name=idPlantilla formControlName="idPlantilla">
+                            <option *ngFor="let opcion of plantillas" [ngValue]="opcion.id">{{opcion.nombre}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row" [ngClass]="{'has-danger': !formEncuesta.controls.idTipoProgramacion.valid && !formEncuesta.controls.idTipoProgramacion.pristine}">
+                    <div class="col-md-2 ">
+                        <label for="tipoProgramacion" class="col-form-label">Tipo</label>
+                    </div>
+                    <div class="col-md-7 ">
+                        <select class="form-control" name=idTipoProgramacion formControlName="idTipoProgramacion">
+                            <option *ngFor="let tipo of tipoProgramacion" [ngValue]="tipo.id">{{tipo.nombre}}</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label for="importarUsuario" class="col-form-label">Importar Usuarios</label>
+                </div>
+                <div class="col-md-7">
+                    <ba-input-file [(ngModel)]="docMatriculas" [extensions]="extensiones" [maxFileSize]="maxTamanioFile" (ngModelChange)="consultarRegistros()"></ba-input-file>
+                    <p *ngIf="numRegistros > 0"> Se Cargaron {{ numRegistros}} registros </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="row">
+        <div class="col-md-11 col-xs-11 col-lg-11">
+            <ng2-smart-table class="table-unsa table-responsive table-center " [settings]="settings" [source]="source" (userRowSelect)="onUserRowSelect($event)">
+            </ng2-smart-table>
+        </div>
+        <div class="col-md-1 col-xs-1 col-lg-1">
+            <div class="btn-group-vertical">
+                <button type="button" class="btn btn-tool" (click)="abrirBuscarUsuariosModal()">
+                    <i class="fa fa-plus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" (click)="abrirActualizarUsuarioModal()">
+                    <i class="fa fa-pencil-square-o"></i>
+                </button>
+                <button type="button" class="btn btn-tool" (click)="eliminarUsuario()">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    </div> -->
+
+</div>
+<buscarUsuariosModalCmp (notify)="guardarPregunta($event)"></buscarUsuariosModalCmp>
+<actualizarUsuarioModalCmp (notify)="actualizarUsuario($event)"></actualizarUsuarioModalCmp>
+<publicarEscuestaModalCmp></publicarEscuestaModalCmp>

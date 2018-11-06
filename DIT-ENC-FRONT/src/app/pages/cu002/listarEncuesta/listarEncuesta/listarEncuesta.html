@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="titulo">{{titulo}}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">	
+                <label class="col-md-2 col-form-label" style="text-align: center">Buscar por Nombre</label>
+                <div class="col-md-8">
+                    <div class="input-group">
+                    <input #query type="text" class="form-control" placeholder="Buscar ..." (keydown.enter)="buscarPorNombre(query.value)">
+                    <span class="input-group-btn">
+                        <button class="btn btn-search" type="button"><i class="fa fa-search" (click)="buscarPorNombre(query.value)"></i></button>
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button  class="btn btn-unsa-nuevo pull-right" (click)="generarProgramacion()"><i class="fa fa-plus" aria-hidden="true"></i> Crear Programación </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-xs-12 col-lg-12">
+            <div class="form-legend pull-right">
+                <span tooltip='Pendiente'><i class="fa fa-exclamation-circle mwarning"></i>Pendiente</span>
+                <span tooltip='Publicada'><i class="fa fa-exclamation-circle msucess"></i>Publicada</span>
+                <span tooltip='En Ejecución'><i class="fa fa-exclamation-circle mdanger "></i>En ejecución</span>
+                <span tooltip='Finalizada'><i class="fa fa-exclamation-circle minfo "></i>Finalizada</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-xs-12 col-lg-12">
+            <ng2-smart-table class="table-unsa table-responsive table-center" [settings]="settings" [source]="source"></ng2-smart-table>
+        </div>
+    </div>
+</div>
+
+<crearProgramacionModalCmp></crearProgramacionModalCmp>
+<baConfirmDialogCmp></baConfirmDialogCmp>

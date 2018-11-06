@@ -1,0 +1,70 @@
+<div class="page-top clearfix" baScrollPosition maxHeight="50" (scrollChange)="scrolledChanged($event)"
+     [ngClass]="{scrolled: isScrolled}">
+  <a class="al-logo clearfix" (click)="inicio();">
+    <img style="display: inline-block; height: 35px;" src="assets/img/core/unsacolor.png">
+  </a>
+  <a href (click)="toggleMenu()" class="collapse-menu-link ion-navicon"></a>
+
+  <ng-container *ngIf="isValid">
+  <div class="user-profile clearfix">
+    <div class="dropdown al-user-profile">
+      <a class="profile-toggle-link dropdown-toggle" id="group-dasboard" data-toggle="dropdown" aria-expanded="false" style="color: white;">
+        <i class="fa fa-th" style="font-size: 18px;"></i>
+      </a>
+      <ul class="dropdown-menu top-dropdown-menu profile-dropdown" aria-labelledby="group-dasboard" style="padding: 5px 10px;">
+        <li class="dropdown-item li-drop-item items-app">
+          <ng-container *ngFor="let app of user.aplicaciones">
+            <div class="grupo-item" [ngClass]="{'grupo-item-float':clsLenApp}"
+            (click)="goToApp(app.ruta)">
+              <i class="{{app.icono}}"></i>
+              <span>{{app.nombre}}</span>
+            </div>
+          </ng-container>
+          
+          <!--<div class="grupo-item">
+            <img src="http://stokpic.com/wp-content/uploads/2015/02/Man-Typing-Whilst-Doing-Business-At-A-Coffee-Shop1.jpg" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+            <span>texto 1 </span>
+          </div> -->
+
+        </li>
+        <li class="dropdown-item li-drop-item closeSes pointer-default" (click)="gotoDashboard();">Más</li>
+      </ul>
+    </div>
+  </div>
+  </ng-container>
+  <div class="user-profile clearfix">
+    <div class="dropdown al-user-profile">
+      <a class="profile-toggle-link dropdown-toggle" id="user-profile-dd" data-toggle="dropdown" aria-expanded="false" style="color: white;">
+        <!--<img src="{{ ( 'Nasta' | baProfilePicture ) }}">-->
+        <i class="fa fa-user icon-user-view"></i>
+        <span >{{displayName}}</span>
+      </a>
+      <ng-container *ngIf="isValid">
+      <ul class="dropdown-menu top-dropdown-menu profile-dropdown" aria-labelledby="user-profile-dd" style="width: 120%; padding: 5px;">
+        <li class="dropdown-item li-drop-item">
+          <b class="pre-line">{{user.givenName | uppercase}}, {{user.sn | uppercase}}</b><br>
+          <i>correo@unsa.edu.pe</i><br>
+          <div class="al-user-profile-roles">
+              <ng-container *ngFor="let app of user.aplicaciones">
+                <ng-container *ngFor="let rol of app.roles">
+                  <b class="pre-line"><i>{{app.nombre | uppercase}} ({{rol}})</i></b>
+                  <br>
+                </ng-container>
+              </ng-container>
+          </div>
+          
+        </li>
+        <!--<li class="dropdown-item"><i class="dropdown-arr"></i></li>-->
+        <li class="dropdown-item li-drop-item closeSes pointer-default"  (click)="showProfile();">Mi Perfil</li>
+        <li class="dropdown-item li-drop-item closeSes pointer-default"  (click)="cerrar();">Cerrar Sesión</li>
+      </ul>
+      </ng-container>
+      <ng-container *ngIf="!isValid">
+      <ul class="dropdown-menu top-dropdown-menu profile-dropdown" aria-labelledby="user-profile-dd">
+        <li class="dropdown-item li-drop-item closeSes pointer-default"  (click)="login();">Ir al Login</li>
+      </ul>
+      </ng-container>
+    </div>
+  </div>
+</div>
+<ba-profile></ba-profile>

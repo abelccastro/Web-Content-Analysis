@@ -1,0 +1,18 @@
+<div style='text-align:center'>
+    <button *ngIf="estadoPendiente" type="button" tooltip='Publicar' class="btn btn-unsa-xs" style="background: transparent" (click)="publicarProgramacion()">
+        <i class="fa fa-paper-plane"></i>
+    </button>
+    <button *ngIf="estadoPendiente" type="button" tooltip='Eliminar' class="btn btn-unsa-xs" style="background: transparent" (click)="eliminarProgramacion()">
+        <i class="fa fa-trash-o"></i>
+    </button>
+    <button *ngIf="!estadoPendiente" type="button" tooltip='Ver Programación' class="btn btn-unsa-xs" style="background: transparent" (click)="verProgramacion()">
+        <i class="fa fa-eye"></i>
+    </button>
+    <button *ngIf="estadoPublicado" type="button" tooltip='Ejecutar Manualmente' class="btn btn-unsa-xs" style="background: transparent" (click)="ejecutarProgramacion()">
+        <i class="fa fa-play"></i>
+    </button>
+    <button *ngIf="estadoEjecutado" type="button" tooltip='Finalizar Manualmente' class="btn btn-unsa-xs" style="background: transparent" (click)="finalizarProgramacion()">
+        <i class="fa fa-stop-circle-o"></i>
+    </button>
+</div>
+<baConfirmDialogCmp></baConfirmDialogCmp>

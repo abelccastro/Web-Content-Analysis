@@ -1,0 +1,15 @@
+<div style='text-align:center'>
+    <button type="button" tooltip='Ver' *ngIf="!editable" class="btn btn-unsa-xs" style="background: transparent" (click)="verPlantilla()">
+        <i class="fa fa-eye"></i>
+    </button>
+    <button type="button" tooltip='Clonar' class="btn btn-unsa-xs" style="background: transparent" (click)="clonarPlantilla()">
+        <i class="fa fa-clone"></i>
+    </button>
+    <button type="button" tooltip='Editar' *ngIf="editable" class="btn btn-unsa-xs" style="background: transparent" (click)="editarPlantilla()">
+        <i class="fa fa-pencil-square-o"></i>
+    </button>
+    <button type="button" tooltip='Eliminar' *ngIf="editable" class="btn btn-unsa-xs" style="background: transparent" (click)="eliminarPlantilla()">
+        <i class="fa fa-trash-o"></i>
+    </button>
+</div>
+<baConfirmDialogCmp></baConfirmDialogCmp>

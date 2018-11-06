@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 col-xs-12 col-lg-12">
+            <h2 class="titulo">{{titulo}}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <fieldset class="form-control">
+            <legend>Detalle</legend>
+            <div class="form-group row" >
+                <div class="col-md-6">
+                    <div class="col-md-4">
+                        <label for="nombreEncuesta"> Nombre de la Programación:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <p> {{dtoConsultarProgramacion.nombre}} </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-md-4 ">
+                        <label for="idPlantilla"> Nombre de la Plantilla:</label>
+                    </div>
+                    <div class="col-md-8 ">
+                        <p> {{dtoConsultarProgramacion.nombrePlantilla}} </p>
+                    </div>
+                </div>
+            </div> 
+            <div class="form-group row" >
+                <div class="col-md-6">
+                    <div class="col-md-4">
+                        <label for="nombreEncuesta"> Fecha De Inicio:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <p>{{fechaInicio}}</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-md-4 ">
+                        <label for="idPlantilla"> Fecha de Cierre:</label>
+                    </div>
+                    <div class="col-md-8 ">
+                        <p> {{fechaCierre}} </p>
+                    </div>
+                </div>
+            </div> 
+        </fieldset>
+        </div>
+    </div>
+    <div class="row" *ngIf="dtoConsultarProgramacion.idTipoProgramacion != 2">
+        <div class="col-md-12">
+            <h2 class="titulo">Objetos de Evaluación</h2>
+            <ng2-smart-table class="table-unsa table-responsive table-center " [settings]="settings" [source]="source">
+            </ng2-smart-table>
+        </div>
+    </div>
+</div>

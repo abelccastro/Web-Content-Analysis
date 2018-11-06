@@ -1,0 +1,6 @@
+<div style='text-align:center'>
+    <button *ngIf="rowData.idEstadoEncuesta == 2 && rowData.enviado == 0" type="button" tooltip='LLenar Encuesta' class="btn btn-unsa-xs" style="background: transparent" (click)="mostrarEncuesta()" >
+            <i class="fa fa-pencil"></i>
+    </button>
+</div>
+<baConfirmDialogCmp></baConfirmDialogCmp>

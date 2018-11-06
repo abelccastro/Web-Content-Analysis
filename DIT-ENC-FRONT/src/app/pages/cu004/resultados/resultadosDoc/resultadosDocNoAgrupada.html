@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-12">
+        <fieldset class="form-control">
+            <legend>Ver Resultados</legend>
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label class="col-md-3 col-form-label">Programación: </label>
+                    <div class="col-md-9">
+                        <input class="col-md-12 form-control" type="text" placeholder="Ingrese una programación" [(ngModel)]="dtoListarResultadoProgramacionEvaluacion.nombreProgramacion" >
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-3 offset-md-9">
+                    <button type="button" class="btn btn-primary" (click)="listarResultadoPorProgramacionEvaluacion()">
+                        <i class="fa fa-search" aria-hidden="true"></i> Filtrar</button>            
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 col-xs-12 col-lg-12">
+        <ng2-smart-table class="table-unsa table-responsive table-center" [settings]="settings" [source]="source"></ng2-smart-table>
+    </div>
+</div>

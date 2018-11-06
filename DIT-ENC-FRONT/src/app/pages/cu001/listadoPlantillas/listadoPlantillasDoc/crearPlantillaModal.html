@@ -1,0 +1,49 @@
+<div class="modal fade" bsModal #crearPlantillaModalCmp="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog"
+    aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form [formGroup]="form" novalidate>
+                <!-- cabecera -->
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="cerrar()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title">{{titulo}}</h5>
+                </div>
+                <!-- Cuerpo -->
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <fieldset class="form-control">
+                                <legend>Datos</legend>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label">Nombre</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" type="text" formControlName="nombre" placeholder="Ingrese un nombre">
+                                        <div *ngIf="appControlsForm.validControls.nombre" class="valid valid-danger">
+                                            {{appControlsForm.validControls.nombre}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label">Descripcion</label>
+                                    <div class="col-md-9">
+                                        <input class=" form-control" type="text" formControlName="descripcion" placeholder="Ingrese una descripción">
+                                        <div *ngIf="appControlsForm.validControls.descripcion" class="valid valid-danger">
+                                            {{appControlsForm.validControls.descripcion}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="obl">(*) Todos los campos son obligatorios</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dunsa" (click)="cerrar()">Cancelar</button>
+                    <button type="submit" class="btn btn-aunsa" [disabled]="!form.valid" (click)="generarPlantilla()">Aceptar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

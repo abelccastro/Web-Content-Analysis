@@ -1,0 +1,50 @@
+@import '../../sass/conf/conf';
+
+.user-panel {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    height: 50%;
+}
+.user-panel .user-info {
+    display: inline;
+    padding-left: 10px;
+}
+.user-panel .rol-panel {
+    position: relative;
+}
+.user-panel .roles-user {
+    padding: 0;
+}
+.user-panel .dropdown-toggle::after {
+    display:none;
+}
+
+.user-panel .dropdown-menu {
+    left: 100px;
+    right: 0;
+    top: 0;
+}
+.nombre-rol{
+    display: inline-block;
+    word-wrap: break-word;
+    padding: 0;
+    width: $rolmenu-width;
+    white-space: nowrap;
+    overflow-x: hidden;
+    span {
+        color:black;
+        font-weight: bold;
+        word-wrap: break-word;
+        font-size: 15px;
+    }
+
+}
+.item-rol {
+    a {
+        span {
+            font-weight: bold;
+            font-style: oblique;
+        }
+    }
+}
