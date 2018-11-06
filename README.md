@@ -2,13 +2,17 @@
 
 Desenvolvido para a discliplina de MAC5853 Desenvolvimento de Sistemas de Computacao. 
 
+## Project Description
+Esse é um projeto da disclipima de MAC5853, para determinar e identificar que sites estão de acordo a determinadas políticas.
 
-# Requerimentos
+(Modificação 05/novembro): Todo o  modelo de classes de dados  e os testes unitarios foram desenvolvidos. 
+
+## Requerimentos
 
 - Java 8
 - Tomcat 8.0
 - Postgresql 9.3
-- Maven 9.3.9
+- Maven 3.3.9
 - Angular 5 
 
 ## Instalação do Banco de Dados 
