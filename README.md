@@ -1,14 +1,19 @@
 # Web-Content-Analysis
-It was created a SOA Architecture  for   Web Content Analysis. 
 
-#Requerimentos
+Desenvolvido para a discliplina de MAC5853 Desenvolvimento de Sistemas de Computacao. 
+
+
+# Requerimentos
 
 - Java 8
 - Tomcat 8.0
 - Postgresql 9.3
 - Maven 9.3.9
+- Angular 5 
 
 ## Instalação do Banco de Dados 
+
+O arquivo de bando de dados "DBurlitis.sql" está localizado na pasta DATABASE. 
 
 ## Instalação do Ambiente (ECLIPSE)
 
