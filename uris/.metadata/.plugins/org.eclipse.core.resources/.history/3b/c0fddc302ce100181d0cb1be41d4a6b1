@@ -1,0 +1,10 @@
+package br.ime.uris.repository.persistence;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import br.ime.uris.domain.persistence.Noticia;
+import br.ime.uris.domain.persistence.Site;
+
+public interface SiteRepository extends JpaRepository<Site, Integer> {
+
+}

@@ -11,25 +11,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.ime.uris.dao.NoticiaDao;
-import br.ime.uris.util.dto.NoticiaDto;
+import br.ime.uris.dao.SiteDao;
+import br.ime.uris.util.dto.SiteDto;
 
 @RestController
 @RequestMapping("/")
 public class DemoController {
 	
 	@Autowired
-	private NoticiaDao noticiaDao;
+	private SiteDao siteDao;
  
-    @RequestMapping(value = "/getAll", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody List<NoticiaDto> sayHello() {
-    		
-        return noticiaDao.listNoticia();
-    }
+    
     
     @RequestMapping(value = "/hello", produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> sayHello2()
     {
-        return new ResponseEntity<>(noticiaDao.listNoticia(), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(siteDao.listSite(), HttpStatus.ACCEPTED);
     }
 }

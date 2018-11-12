@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+/home/kai/eclipse-workspace/Web-Content-Analysis-master/uris/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+4027559377.index
+4138470871.index
+4097712935.index
+2130985852.index
+872598505.index
+1597674306.index

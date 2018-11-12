@@ -1,0 +1,13 @@
+package br.ime.uris.dao.imp;
+
+public class test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		public test_ ()
+		{
+			return a+b;
+		}
+	}
+
+}

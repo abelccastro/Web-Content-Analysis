@@ -1,0 +1,5 @@
+package br.ime.uris.repository.persistence;
+
+public class SiteRepository {
+
+}
