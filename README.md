@@ -92,7 +92,7 @@ E vamos para nos browser e escrevemos a seguiente url: "http://localhost:8080/ur
 Quando o server está ligado, entao podemos executar o arquivo post.py com o seguinte comando
 - python3 post.py
 
-O qual é enviando dados json para a seguinte url "http://localhost:8080/urisService/in", onde é retornado o análise das respetivos sites, e a razao das seus conteúdos restritos.  
+O qual é enviando dados json para a seguinte url "http://localhost:8080/urisService/in", onde é retornado o análise das respetivos sites, e a razao dos seus conteúdos restritos.  
 
 <p align="center">
   <img src="img/in.png">    
