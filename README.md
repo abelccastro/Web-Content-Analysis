@@ -83,7 +83,7 @@ E por último, selecionamos o modulo URIS-RES e clickamos no butão "run" e esco
 E vamos para nos browser e escrevemos a seguiente url: "http://localhost:8080/urisService/index". Se o processo de instalação foi feito bem, então deveriamos ter a seguinte resposta.
 
 <p align="center">
-  <img height="400" src="img/index.png">    
+  <img src="img/index.png">    
    
 </p>
 
@@ -99,6 +99,7 @@ O qual é enviando dados json para a seguinte url "http://localhost:8080/urisSer
    
 </p>
 
+Hello Kitty!!!
 
 
 
