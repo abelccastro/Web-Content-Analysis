@@ -80,10 +80,10 @@ E por último, selecionamos o modulo URIS-RES e clickamos no butão "run" e esco
    
 </p>
 
-E vamos para nos browser e escrevemos a seguiente url: "http://localhost:8080/urisService/hello". Se o processo de instalação foi feito bem, então deveriamos ter a seguinte resposta.
+E vamos para nos browser e escrevemos a seguiente url: "http://localhost:8080/urisService/index". Se o processo de instalação foi feito bem, então deveriamos ter a seguinte resposta.
 
 <p align="center">
-  <img height="400" src="img/run3.png">    
+  <img height="400" src="img/index.png">    
    
 </p>
 
