@@ -1,5 +1,6 @@
 package br.ime.uris.web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.ime.uris.dao.SiteDao;
+import br.ime.uris.domain.persistence.Politica;
+import br.ime.uris.repository.persistence.PoliticaRepository;
+import br.ime.uris.domain.persistence.Informe;
 import br.ime.uris.util.dto.Request;
 import br.ime.uris.util.dto.SiteDto;
 import br.ime.uris.util.dto.Url;
@@ -24,13 +28,18 @@ public class DemoController {
 	@Autowired
 	private SiteDao siteDao;
  
+	@Autowired
+	private PoliticaRepository __politicas; 
+	
     
-    
-    @RequestMapping(value = "/hello", produces=MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST, headers = "Accept=application/json")
+    @RequestMapping(value = "/in", produces=MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<Object> sayHello2(@RequestBody Request request)
     {
-    	List<String> _sites=request.getSites();
-		
+    	List<String> _sites=request.getSites();    	
+    	List<Politica> _politica = __politicas.getPolitica();
+    	
+    	List<Informe> _informe= new ArrayList<>();
+    	
     	for (int i = 0; i < _sites.size(); i++) 
     	{
     		
@@ -40,11 +49,18 @@ public class DemoController {
     		_url.Connection();
     		String texto=_url.get_text().toLowerCase();
     		System.out.println(">>> "+texto);
-    		System.out.println(">>> "+texto.matches(".(fazer)*(cigarro).*"));
-    		System.out.println(">>> "+texto.matches(".*(tabaco).*"));
-    		
+    		for (int j = 0; j < _politica.size(); j++) 
+        	{
+    			if (texto.matches(_politica.get(j).getDescription()))
+    			{
+    				Informe __informe= new Informe();    		    	
+    				__informe.set(_sites.get(i), true,_politica.get(j).getMsg());
+    				_informe.add(__informe);
+    				System.out.println(">>> "+_url.get_url()+_politica.get(j).getMsg());
+    			}
+        	}
     	}
-        return new ResponseEntity<>(siteDao.listSite(), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(_informe, HttpStatus.ACCEPTED);
         
     }
 }
