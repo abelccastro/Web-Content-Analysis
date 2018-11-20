@@ -63,4 +63,11 @@ public class DemoController {
         return new ResponseEntity<>(_informe, HttpStatus.ACCEPTED);
         
     }
+    
+    @RequestMapping(value = "/index", produces=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> sayHello3()
+    {
+    	return new ResponseEntity<>("Benvindo Ao Sistema URLitis!!!", HttpStatus.ACCEPTED);
+        
+    }
 }
