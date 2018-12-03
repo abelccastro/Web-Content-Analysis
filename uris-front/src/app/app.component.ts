@@ -1,40 +1,62 @@
-import { Component } from '@angular/core';
-import { FuseSplashScreenService } from './core/services/splash-screen.service';
-import { TranslateService } from '@ngx-translate/core';
-import { FuseTranslationLoaderService } from './core/services/translation-loader.service';
+import { Component, ViewContainerRef } from '@angular/core';
 
-import { FuseNavigationService } from './core/components/navigation/navigation.service';
-import { FuseNavigationModel } from './navigation/navigation.model';
-import { locale as navigationEnglish } from './navigation/i18n/en';
-import { locale as navigationTurkish } from './navigation/i18n/tr';
+import { GlobalState } from './global.state';
+import { BaImageLoaderService, BaThemePreloader, BaThemeSpinner } from './core/services';
+import { BaThemeConfig } from './core/core.config';
+import { layoutPaths } from './core/core.constants';
 
+import 'style-loader!./app.scss';
+import 'style-loader!./core/initial.scss';
+import { Util } from './core/util/util';
+import { AppConfig } from './app.config';
+import { PagesConfig } from './pages/pages.config';
+
+/**
+ * App Component, el nivel mas alto del sistema
+ * @author: MK
+ */
 @Component({
-    selector   : 'fuse-root',
-    templateUrl: './app.component.html',
-    styleUrls  : ['./app.component.scss']
+  selector: 'app',
+  template: `
+    <main [ngClass]="{'menu-collapsed': isMenuCollapsed}" baThemeRun>
+      <div class="additional-bg"></div>
+      <router-outlet></router-outlet>
+    </main>
+  `
 })
-export class AppComponent
-{
-    constructor(
-        private fuseNavigationService: FuseNavigationService,
-        private fuseSplashScreen: FuseSplashScreenService,
-        private translate: TranslateService,
-        private translationLoader: FuseTranslationLoaderService
-    )
-    {
-        // Add languages
-        this.translate.addLangs(['en', 'tr']);
+export class App {
 
-        // Set the default language
-        this.translate.setDefaultLang('en');
+  isMenuCollapsed: boolean = false;
 
-        // Use a language
-        this.translate.use('en');
+  constructor(private _state: GlobalState,
+              private _imageLoader: BaImageLoaderService,
+              private _spinner: BaThemeSpinner,
+              private viewContainerRef: ViewContainerRef,
+              private themeConfig: BaThemeConfig,
+              private _util: Util) {
 
-        // Set the navigation model
-        this.fuseNavigationService.setNavigationModel(new FuseNavigationModel());
+    _util.readFileRoutes().subscribe(data =>{
+        AppConfig.IP_ROUTE = data.IP_ROUTE_SGR;
+        PagesConfig.IP_ROUTE = data.IP_ROUTE_APP;
+        AppConfig.TIMER_LOADER = data.TIMER_LOADER;
+      });
+    themeConfig.config();
 
-        // Set the navigation translations
-        this.translationLoader.loadTranslations(navigationEnglish, navigationTurkish);
-    }
+    this._loadImages();
+
+    this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
+      this.isMenuCollapsed = isCollapsed;
+    });
+  }
+
+  public ngAfterViewInit(): void {
+    BaThemePreloader.load().then((values) => {
+      this._spinner.hide();
+    });
+  }
+
+  private _loadImages(): void {
+    BaThemePreloader.registerLoader(this._imageLoader.load(layoutPaths.images.root + 'sky-bg.jpg'));
+  }
+
 }

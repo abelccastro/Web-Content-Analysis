@@ -1,0 +1,16 @@
+@import '../../../core/sass/conf/conf';
+$height: 30px;
+
+.mAlertas {
+    width: 420px;
+    left: 37%;
+    top: 30px;
+    position: fixed;
+    font-size: 14px;
+    z-index: 1060;
+}
+
+.alert {
+    margin: 0.5rem 0.2rem;
+    margin-bottom: 0rem;
+}

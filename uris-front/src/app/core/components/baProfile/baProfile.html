@@ -1,0 +1,78 @@
+<div bsModal #winPeAnular="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div>
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="closeModal()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h5 class="modal-title">{{title}}</h5>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="myform" (ngSubmit)="onSubmit(myform.value)" class="form-horizontal">
+                        <fieldset>
+                            <legend>Mi Perfil</legend>
+                            <div class="form-group row">
+                                <label for="inputdni" class="col-sm-4 control-label">DNI:</label>
+                                <div class="col-sm-8">
+                                    <input formControlName="dni" type="text" class="form-control" id="inputdni">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputusuario" class="col-sm-4 control-label">Usuario:</label>
+                                <div class="col-sm-8">
+                                    <input formControlName="usuario" type="text" class="form-control" id="inputusuario">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputnombres" class="col-sm-4 control-label">Nombres:</label>
+                                <div class="col-sm-8">
+                                    <input formControlName="nombres" type="text" class="form-control" id="inputnombres">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputapellidos" class="col-sm-4 control-label">Apellidos:</label>
+                                <div class="col-sm-8">
+                                    <input formControlName="apellidos" type="text" class="form-control" id="inputapellidos">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-8">
+                                    <ba-checkbox 
+                                        [disabled]="false" 
+                                        [label]="'Cambiar Contraseña'" 
+                                        [(ngModel)]="changePassState" [ngModelOptions]="{standalone:true}"></ba-checkbox>
+                                </div>
+                            </div>
+                            <ng-container *ngIf="changePassState">
+                                <div class="form-group row">
+                                    <label for="inputcurrentpass" class="col-sm-4 control-label">Contraseña Actual:</label>
+                                    <div class="col-sm-8">
+                                        <input formControlName="currentpass" type="password" class="form-control" id="inputcurrentpass">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputnewpass" class="col-sm-4 control-label">Nueva Contraseña:</label>
+                                    <div class="col-sm-8">
+                                        <input formControlName="newpass" type="password" class="form-control" id="inputanewpass">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputconfnewpass" class="col-sm-4 control-label">Confirmar Nueva Contraseña:</label>
+                                    <div class="col-sm-8">
+                                        <input formControlName="confnewpass" type="password" class="form-control" id="inputconfnewpass">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="offset-sm-4 col-sm-10">
+                                        <button [disabled]="!myform.valid" type="submit" class="btn btn-success">Cambiar Contraseña</button>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </fieldset>
+                    </form>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<baConfirmDialogCmp></baConfirmDialogCmp>

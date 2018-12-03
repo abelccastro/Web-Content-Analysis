@@ -1,0 +1,25 @@
+<div class="user-panel">
+    <div class="pull-left">
+      <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+    </div>
+    <div class="pull-left user-info">
+            <div class="rol-panel" *ngIf="!sidebarCollapsed">
+                <ul class="nav nav-stacked">
+                    <li>
+                        <div class="btn-group roles-user">
+                            <a class="btn  btn-md dropdown-toggle dropdown-toggle-split roles-user" data-toggle="dropdown" href="#">
+                                <div class="nombre-rol">
+                                    <span>{{rolStr | uppercase}}</span>
+                                </div>
+                                 <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                
+                            </a>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li *ngFor="let rol  of rolesUser" class="item-rol" ><a href="#" (click)="consultarMenu(rol)" class="dropdown-item"><span>{{rol}}</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+    </div>
+</div>
