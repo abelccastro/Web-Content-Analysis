@@ -1,46 +1,67 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12 col-xs-12 col-lg-12">
-            <h2 class="titulo">{{titulo}}</h2>
-        </div>
-    </div>
-    
-    <div class="row">
-        <div class="col-md-12">
+    <form [formGroup]="form" novalidate>
+        <div class="row">
             <fieldset class="form-control">
-                <legend>Buscar plantilla</legend>
+                <legend>Analisys</legend>
+                <!-- row -->
                 <div class="form-group row">
-                    <div class="col-md-6">
-                        <label class="col-md-3 col-form-label">Nombre</label>
+                    <div class="col-md-12">
+                        <label class="col-md-3 col-form-label">Callback</label>
                         <div class="col-md-9">
-                            <input class="col-md-12 form-control" type="text" placeholder="Ingrese un nombre" [(ngModel)]="dtoListarEncuestaPlantilla.nombre">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="col-md-3 col-form-label">Descripción</label>
-                        <div class="col-md-9">
-                            <input class="col-md-12 form-control" type="text" placeholder="Ingrese una descripción" [(ngModel)]="dtoListarEncuestaPlantilla.descripcion">
+                            <input class="col-md-12 form-control" type="text" placeholder="Enter callback site" id="callback" name="callback" formControlName="callback">
+                            <div *ngIf="appControlsForm.validControls.callback" class="valid valid-danger">
+                                {{appControlsForm.validControls.callback}}
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <div class="col-md-2 offset-md-10" >
-                        <button type="button" class="btn btn-primary" (click)="listarEncuestaPlantilla()"><i class="fa fa-search" aria-hidden="true" ></i> Filtrar</button>
+                <div class="form-group row" formArrayName="sites">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <label class="col-md-5 col-form-label">site</label>
+                        </div>
+                        <div class="row" *ngFor="let opcion of form.controls['sites'].controls; let i = index">
+                            <div [formGroupName]="i">
+                                <div class="col-xs-4">
+                                    <input type="text" class="form-control" name="option[]" formControlName="site" />
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <button type="button" class="btn btn-default removeButton" (click)="removeSite(i,'sites')">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <span>
+                                        <i class="fa fa-arrow-up" aria-hidden="true" (click)="desplazar(i,-1,'sites')"></i>
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <span>
+                                        <i class="fa fa-arrow-down" aria-hidden="true" (click)="desplazar(i,1,'sites')"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-10"></div>
+                            <div class="col-xs-2">
+                                <button class="btn btn-unsa-nuevo pull-right" (click)="addSite('sites')">
+                                    <i class="fa fa-plus" aria-hidden="true"></i> Nuevo
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </fieldset>
+            <div class="obl">(*) All the fields are required</div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <button class="btn btn-unsa-nuevo pull-right" (click)="generarPlantilla()">
-                <i class="fa fa-plus" aria-hidden="true"></i> Nuevo </button>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-dunsa" (click)="cerrar()">Cancel</button>
+            <button type="submit" class="btn btn-aunsa"  (click)="generateAnalysis()">Send</button>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 col-xs-12 col-lg-12">
-        </div>
-    </div>
+    </form>
 </div>
 
 <baConfirmDialogCmp></baConfirmDialogCmp>

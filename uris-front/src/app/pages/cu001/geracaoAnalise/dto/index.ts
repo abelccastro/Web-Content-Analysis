@@ -1,1 +1,2 @@
-export * from './dtoOutConsultarEncuestaPlantilla';
+export * from './GenerateAnalyseOutDto';
+export * from './UrlDto';
