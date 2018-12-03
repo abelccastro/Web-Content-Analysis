@@ -1,6 +1,8 @@
 package br.ime.uris.util.dto;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.jsoup.Connection.Response;
 import org.jsoup.Jsoup;
@@ -86,6 +88,41 @@ public class Url {
 		
 		
 	}
+	public List<String> get_img()
+	{
+		Response response = null;		
+		List<String> rpta=new ArrayList<>();
+		try {
+			Document doc;		
+			response=Jsoup.connect(url).followRedirects(false).execute();
+			
+			if (200 == response.statusCode()){
+				
+				doc = Jsoup.connect(url).get();					
+				Elements links = doc.body().getElementsByTag("img");
+				for (Element el : links) {
+					String src = el.absUrl("src");
+					//if (src.indexOfd(url)>=0)
+					//{
+					//	rpta.add(src);
+					//	System.out.println(src);
+					//}					
+					rpta.add(src);					
+				}
+				
+				
+			}
+				
+		} 		catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println(response.statusMessage());			
+		}
+		return rpta;	
+		
+		
+	}
+	
+	
 	
 
 }

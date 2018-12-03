@@ -1,11 +1,17 @@
 package br.ime.uris.domain.persistence;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Informe {
 	public String url;
 	public Boolean restrict;
-	public String reason;
+	public List<String> reasons;
 	//public List<String> reasons;
+	
+	public Informe()
+	{
+		reasons=new ArrayList<>();
+	}
 	
 	public String getUrl() {
 		return url;
@@ -20,11 +26,15 @@ public class Informe {
 		this.restrict = restrict;
 	}
 	
-	public void set(String url,Boolean restrict, String reason)
+	public void set(String url,Boolean restrict)
 	{
 		this.url=url;
 		this.restrict = restrict;
-		this.reason=reason;
+	}
+	public void addReason(String reason)
+	{
+		this.reasons.add(reason);
+		
 	}
 		
 		

@@ -17,6 +17,7 @@ import br.ime.uris.dao.SiteDao;
 import br.ime.uris.domain.persistence.Politica;
 import br.ime.uris.repository.persistence.PoliticaRepository;
 import br.ime.uris.domain.persistence.Informe;
+import br.ime.uris.util.dto.An_image;
 import br.ime.uris.util.dto.Request;
 import br.ime.uris.util.dto.SiteDto;
 import br.ime.uris.util.dto.Url;
@@ -48,21 +49,39 @@ public class DemoController {
     		Url _url=new Url(_sites.get(i));    
     		_url.Connection();
     		String texto=_url.get_text().toLowerCase();
+    		
     		System.out.println(">>> "+texto);
     		for (int j = 0; j < _politica.size(); j++) 
         	{
     			if (texto.matches(_politica.get(j).getDescription()))
     			{
+    				
     				Informe __informe= new Informe();    		    	
     				__informe.set(_sites.get(i), true,_politica.get(j).getMsg());
     				_informe.add(__informe);
     				System.out.println(">>> "+_url.get_url()+_politica.get(j).getMsg());
     			}
         	}
+    		
+    		System.out.print("+++++++++\n");
+    		//System.out.print(_url.get_img().toString());
+    		//List<String> imgs=_url.get_img();
+    		//for (String img: imgs)
+    		//{
+    		//	An_image _an_img=new An_image(img);
+    		//	_an_img.get_descripcion();
+    		//}
+    		
+    		
+    		//System.out.print("\n +++++++++\n");
+    		
     	}
         return new ResponseEntity<>(_informe, HttpStatus.ACCEPTED);
         
     }
+    
+    
+    
     
     @RequestMapping(value = "/index", produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> sayHello3()
