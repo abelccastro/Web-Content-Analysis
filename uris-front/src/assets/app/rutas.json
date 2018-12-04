@@ -1,4 +1,4 @@
 {
-    "IP_ROUTE_SGR": "http://localhost:8080/urisService/",
+    "IP_ROUTE_SGR": "http://172.25.5.222:8080/urisService/",
     "IP_ROUTE_APP": "http://localhost:8080/urisService/"
 }
