@@ -27,7 +27,7 @@ O arquivo de bando de dados "DBurlitis.sql" está localizado na pasta DATABASE.
 
   $ sudo -u postgres psql -f DBurlitis.SQL DBurlitis
 
-## Instalação do Ambiente (ECLIPSE)
+## Instalação no Ambiente (ECLIPSE)
 
 Descargamos o respositorio e extraimos en algum endereço.
 
