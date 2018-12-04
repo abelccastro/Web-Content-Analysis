@@ -26,10 +26,11 @@ public class Informe {
 		this.restrict = restrict;
 	}
 	
-	public void set(String url,Boolean restrict)
+	public void set(String url,Boolean restrict, String reason)
 	{
 		this.url=url;
 		this.restrict = restrict;
+		this.addReason(reason);
 	}
 	public void addReason(String reason)
 	{
