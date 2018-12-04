@@ -13,6 +13,11 @@ import { BaConfirmDialogCmp,OPTIONS_MODAL } from "../.././../../core/components/
 import { ValidParamForm } from '../../../../app.index';
 import { FormControl, FormArray } from '@angular/forms/src/model';
 import { GenerateAnalysisDto } from "../dto/index";
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs';
+import { Headers, RequestOptions } from '@angular/http';
+
+
 
 @Component({
 	selector: 'geracaoAnaliseDocCmp',
@@ -34,7 +39,7 @@ export class GeracaoAnaliseDocCmp implements OnInit{
         }]
 	);
 	
-	constructor(private _util: Util, private _utilRutas: UtilConstRutas, private _router: Router) {
+	constructor(private _util: Util, private _utilRutas: UtilConstRutas, private _router: Router, private http:Http) {
         this.onBuildForm();
 	}
 	
@@ -88,6 +93,24 @@ export class GeracaoAnaliseDocCmp implements OnInit{
 		console.log(this.dtoGenerateAnalyse);
         this._util.http({ url: this._utilRutas.GENERATE_ANALISYS, data:this.dtoGenerateAnalyse }).subscribe(
             data => {
+				console.log('Enviando reynaldo');
+
+				let headers = new Headers({ 'Content-Type': 'application/json' });
+				let options = new RequestOptions({ headers: headers });
+				let jsonPayload = {
+					sites: data
+				}
+				console.log( JSON.stringify(jsonPayload));
+				this.http.post(this.dtoGenerateAnalyse.callback, JSON.stringify(jsonPayload), options).subscribe(
+					data=>{
+						console.log('data');
+					},
+					error=>{
+						console.log(error);
+					}
+				);
+				console.log('Finalizo reynaldo');
+
                 this.form.reset();
             },
             error => {
@@ -95,6 +118,19 @@ export class GeracaoAnaliseDocCmp implements OnInit{
                 this._util.alerts(error);
             }
         );
-    }
+	}
+	
+	private extractData(res: Response) {
+		let body = res.json();
+			return body || {};
+		}
+		private handleErrorObservable (error: Response | any) {
+		console.error(error.message || error);
+		return Observable.throw(error.message || error);
+		}
+		private handleErrorPromise (error: Response | any) {
+		console.error(error.message || error);
+		return Promise.reject(error.message || error);
+		}	
 
 }
