@@ -49,6 +49,8 @@ public class DemoController {
     		Url _url=new Url(_sites.get(i));    
     		_url.Connection();
     		String texto=_url.get_text().toLowerCase();
+    		if (texto=="!")
+    			texto=_url.get_html().toLowerCase();
     		
     		System.out.println(">>> "+texto);
     		for (int j = 0; j < _politica.size(); j++) 
