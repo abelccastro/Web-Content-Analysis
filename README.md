@@ -19,6 +19,8 @@ Esse é um projeto da disclipima de MAC5853, para determinar e identificar que s
 
 O arquivo de bando de dados "DBurlitis.sql" está localizado na pasta DATABASE. 
 
+- A instalação pode ser feito com o seguinte comando: $ sudo -u postgres psql -f DBurlitis.SQL prueba
+
 ## Instalação do Ambiente (ECLIPSE)
 
 Descargamos o respositorio e extraimos en algum endereço.
