@@ -47,62 +47,79 @@ public class DemoController {
     	
     	List<Informe> _informe= new ArrayList<>();
     	
+    	Informe __informe;
     	for (int i = 0; i < _sites.size(); i++) 
     	{
-    		
+    		__informe= new Informe();    		
     		System.out.println("***************************************************");
     		System.out.println(i+" - "+_sites.get(i));
     		Url _url=new Url(_sites.get(i));    
-    		_url.Connection();
-    		String texto=_url.get_text().toLowerCase();
-    		if (texto=="!")
-    			texto=_url.get_html().toLowerCase();
-    		
-    		System.out.println(">>> "+texto);
-    		for (int j = 0; j < _politica.size(); j++) 
-        	{
-    			if (texto.matches(_politica.get(j).getDescription()))
-    			{
-    				
-    				Informe __informe= new Informe();    		    	
-    				__informe.set(_sites.get(i), true,_politica.get(j).getMsg());
-    				_informe.add(__informe);
-    				System.out.println(">>> "+_url.get_url()+_politica.get(j).getMsg());
-    			}
-        	}
-    		
-    		System.out.print("+++++++++\n");
-    		//System.out.print(_url.get_img().toString());
-    		//List<String> imgs=_url.get_img();
-    		//for (String img: imgs)
-    		//{
-    		//	An_image _an_img=new An_image(img);
-    		//	_an_img.get_descripcion();
-    		//}
-    		
-    		
-    		//System.out.print("\n +++++++++\n");
-    		try {
+    		Integer status=_url.Connection();
+    		if (status!=404)
+    		{
+    			System.out.println("Con >>>>> "+_url.Connection());
     			
-    			ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-    			String json = ow.writeValueAsString(_informe);
-    			StringBuilder payload =new StringBuilder();
-    			payload.append("{\"sites\":");
-    			payload.append(json);
-    			payload.append("}");
-    			System.out.println(payload.toString());
-    			
-				Jsoup.connect(request.getCallback())
-				.method(Method.POST).ignoreContentType(true)
-				.header("Content-Type", "application/json")
-				.requestBody(payload.toString())
-				.execute();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-    		
+    			String texto=_url.get_text().toLowerCase();
+				
+				if (texto=="!")
+					texto=_url.get_html().toLowerCase();
+				
+				System.out.println(">>> "+texto);
+				Boolean existe=false;
+				if (texto!="!")
+				{
+				 
+					for (int j = 0; j < _politica.size(); j++) 
+			    	{
+								    	
+						
+						if (texto.matches(_politica.get(j).getDescription()))
+						{    				
+							__informe.set(_sites.get(i), true,_politica.get(j).getMsg());
+							System.out.println(">>> "+_url.get_url()+_politica.get(j).getMsg());
+				        	existe=true;
+						}
+						
+					}
+				}
+				if (existe==true)
+				{						
+					_informe.add(__informe);
+				}
+				else
+				{
+					__informe.set2(_sites.get(i), false);
+					_informe.add(__informe);
+				}
+    		}
+    		else 
+    		{
+    			__informe.set(_sites.get(i), false,"Paginas no existen!!! error 404!!!");
+    			_informe.add(__informe);
+    		}
     	}
+    
+        	
+		
+    	try {
+			
+			ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+			String json = ow.writeValueAsString(_informe);
+			StringBuilder payload =new StringBuilder();
+			payload.append("{\"sites\":");
+			payload.append(json);
+			payload.append("}");
+			System.out.println(payload.toString());
+			
+			Jsoup.connect(request.getCallback())
+			.method(Method.POST).ignoreContentType(true)
+			.header("Content-Type", "application/json")
+			.requestBody(payload.toString())
+			.execute();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         return new ResponseEntity<>(_informe, HttpStatus.ACCEPTED);
         
     }

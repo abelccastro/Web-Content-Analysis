@@ -18,16 +18,18 @@ public class Url {
 	{
 		url=url_;
 	}
-	public void Connection() 
+	public int Connection() 
 	{
 		Response response;
 		try {
 			response = Jsoup.connect(url).userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36")
 				.followRedirects(false).execute();
 			System.out.println(response.statusCode() + " : " + response.url());
+			return response.statusCode();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			return 404;
 		}
 	}
 	public String get_url()
