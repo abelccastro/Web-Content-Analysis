@@ -162,11 +162,20 @@ ALTER TABLE ONLY politica ALTER COLUMN msg SET DEFAULT nextval('politica_msg_seq
 -- Data for Name: politica; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO politica VALUES (2, '.*(acompanhante).*', 'Tópico relacionado à prostituição');
-INSERT INTO politica VALUES (1, '.*(tabaco|cigarro).*', 'Tópico relacionado à venda de Tabaco!!!');
-INSERT INTO politica VALUES (3, '.*(arma|pistola|ak 47|revólver|magnum|calibre[1-9]).*', 'Tópicos relacionasdos à Venda de Armas!');
-INSERT INTO politica VALUES (5, '.*(medicamento).*', 'Tópico relacionado à Venda de Medicamentos');
-INSERT INTO politica VALUES (6, '.*(cytotec|misoprostol).*', 'Tópico relacionado à venda de Medicanentos Abortivos!');
+INSERT INTO politica VALUES (6, '.*(cytotec|misoprostol).*', 'Conteudo de Medicanentos Abortivos!');
+INSERT INTO politica VALUES (1, '.*(tabaco|cigarro).*', 'Conteudo de Tabaco!');
+INSERT INTO politica VALUES (5, '.*(medicamento).*', 'Conteudo de Medicamentos!');
+INSERT INTO politica VALUES (7, '.*(cocaina|ecstasy|anfetamina).*', 'Conteudo de drogas sinteticas!');
+INSERT INTO politica VALUES (8, '.*(maconha|opio).*', 'Conteudo de Drogas naturais');
+INSERT INTO politica VALUES (3, '.*(calibre[1-9]*).*', 'Conteudo de Armas - calibre!');
+INSERT INTO politica VALUES (11, '.*(magnum).*', 'Conteudo de Armas');
+INSERT INTO politica VALUES (12, '.*(arma |pistola|ak 47|revólver).*', 'Conteudo de Armas');
+INSERT INTO politica VALUES (10, '.*(arma|pistola).*(r$).*', 'Conteudo de armas (nivel 2)');
+INSERT INTO politica VALUES (9, '.*(acompanhante).*(contato).*', 'Conteudo Adulto (nivel 2)');
+INSERT INTO politica VALUES (13, '.*(acompanhante).*(modelo).*(gata).*(celular).*', 'Conteudo Adulto! (nivel 4)');
+INSERT INTO politica VALUES (14, '.*(acompanhante).*(modelo).*(gata).*	', 'Conteudo Adulto! (nivel 3)');
+INSERT INTO politica VALUES (2, '.*(acompanhante).*', 'Conteudo Adulto!');
+INSERT INTO politica VALUES (15, '.*(acompanhante|modelo).*(acompanhante|modelo).*(acompanhante|modelo).*(acompanhante|modelo).*(acompanhante|modelo).*	', 'Conteudo Adulto! (nivel 5)');
 
 
 --
