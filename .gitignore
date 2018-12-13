@@ -10,6 +10,8 @@ target/
 .metadata/*
 .recommenders/*
 Servers/*
+server Tomcat/*
+Apache TomCAT/*
 
 
 uris-front/config/*
