@@ -1,65 +1,89 @@
 <div class="container-fluid">
-    <form [formGroup]="form" novalidate>
+    <form [formGroup]="form">
         <div class="row">
             <fieldset class="form-control">
                 <legend>Analisys</legend>
-                <!-- row -->
-                <div class="form-group row">
-                    <div class="col-md-12">
-                        <label class="col-md-3 col-form-label">Callback</label>
-                        <div class="col-md-9">
-                            <input class="col-md-12 form-control" type="text" placeholder="Enter callback site" id="callback" name="callback" formControlName="callback">
-                            <div *ngIf="appControlsForm.validControls.callback" class="valid valid-danger">
-                                {{appControlsForm.validControls.callback}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row" formArrayName="sites">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <label class="col-md-5 col-form-label">site</label>
-                        </div>
+                <div class="col-md-8 offset-md-2">
+
+                    <div class="form-group " formArrayName="sites">
+                        <h1>
+                            <p class="text-center">URIS</p>
+                        </h1>
                         <div class="row" *ngFor="let opcion of form.controls['sites'].controls; let i = index">
-                            <div [formGroupName]="i">
-                                <div class="col-xs-4">
-                                    <input type="text" class="form-control" name="option[]" formControlName="site" />
+                            <div class="col-md-12">
+                                <label class="col-md-3 col-form-label">URL {{i + 1}}</label>
+                                <div [formGroupName]="i" class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Enter Url" formControlName="site" />
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="button" class="btn btn-default removeButton" (click)="removeSite(i,'sites')">
+                                        <i class="fa fa-trash-o"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-default">
+                                        <span>
+                                            <i class="fa fa-arrow-up" aria-hidden="true" (click)="desplazar(i,-1,'sites')"></i>
+                                        </span>
+                                    </button>
+                                    <button type="button" class="btn btn-default">
+                                        <span>
+                                            <i class="fa fa-arrow-down" aria-hidden="true" (click)="desplazar(i,1,'sites')"></i>
+                                        </span>
+                                    </button>
                                 </div>
                             </div>
-                            <div class="col-xs-4">
-                                <button type="button" class="btn btn-default removeButton" (click)="removeSite(i,'sites')">
-                                    <i class="fa fa-trash-o"></i>
-                                </button>
-                                <button type="button" class="btn btn-default">
-                                    <span>
-                                        <i class="fa fa-arrow-up" aria-hidden="true" (click)="desplazar(i,-1,'sites')"></i>
-                                    </span>
-                                </button>
-                                <button type="button" class="btn btn-default">
-                                    <span>
-                                        <i class="fa fa-arrow-down" aria-hidden="true" (click)="desplazar(i,1,'sites')"></i>
-                                    </span>
-                                </button>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="col-md-3 col-form-label">Callback</label>
+                            <div class="col-md-6">
+                                <input class="col-md-12 form-control" type="text" placeholder="Enter callback site" id="callback" name="callback" formControlName="callback">
+                                <div *ngIf="appControlsForm.validControls.callback" class="valid valid-danger">
+                                    {{appControlsForm.validControls.callback}}
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12">
-                        <div class="row">
-                            <div class="col-xs-10"></div>
-                            <div class="col-xs-2">
-                                <button class="btn btn-unsa-nuevo pull-right" (click)="addSite('sites')">
-                                    <i class="fa fa-plus" aria-hidden="true"></i> Nuevo
-                                </button>
-                            </div>
+                    <div class="form-group row">
+
+                        <div class="offset-md-3 col-md-9 ">
+                            <button type="button" class="btn btn-primary btn-sm" (click)="addSite('sites')">
+                                <span class="glyphicon glyphicon-plus"></span>
+                                Agregar um Campo para URL</button>
+                            <button type="submit" class="btn btn-success btn-sm" [disabled]="!form.valid" (click)="generateAnalysis()">
+                                <span class="glyphicon glyphicon-search"></span>
+                                Começar o Análise do Projeto
+                            </button>
                         </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="mb-2">
+                            <progressbar [animate]="false" [value]="dynamic" type="success">
+                                <b>{{dynamic}}%</b>
+                            </progressbar>
+                            <small>
+                                <em>See the progress</em>
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <accordion>
+                            <accordion-group *ngFor="let site of analisys; let i = index" [panelClass]="customClass" [isOpen]="isFirstOpen">
+                                <button class="btn btn-link btn-block clearfix" accordion-heading>
+                                    <div class="pull-left float-left">
+                                        <strong>{{site.url}}</strong>
+                                    </div>
+                                    <div class="float-right pull-right p-3 mb-2 bg-danger text-white" style="border-radius: 50%">
+                                            <i class="fa fa-check">{{site.restrict}}</i>
+                                </div>
+                                </button>
+                                <div *ngFor="let reason of site.reasons">{{reason}}</div>
+                            </accordion-group>
+                        </accordion>
                     </div>
                 </div>
             </fieldset>
             <div class="obl">(*) All the fields are required</div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-dunsa" (click)="cerrar()">Cancel</button>
-            <button type="submit" class="btn btn-aunsa"  (click)="generateAnalysis()">Send</button>
         </div>
     </form>
 </div>
