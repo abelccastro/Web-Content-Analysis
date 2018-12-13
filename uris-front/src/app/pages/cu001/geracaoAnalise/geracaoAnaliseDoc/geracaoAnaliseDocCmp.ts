@@ -29,6 +29,9 @@ export class GeracaoAnaliseDocCmp implements OnInit{
 	private titulo:string = "Generate Analysis";
 	private form: FormGroup;
 	private dtoGenerateAnalyse  = new GenerateAnalysisDto;
+	private max:number =100;
+	private dynamic:number =40;
+	private analisys:any=[];
 
 
 	appControlsForm = new ValidParamForm(
@@ -44,7 +47,8 @@ export class GeracaoAnaliseDocCmp implements OnInit{
 	}
 	
 	ngOnInit() {
-        this.form.addControl('sites',new FormArray([]));
+		this.form.addControl('sites',new FormArray([]));
+		this.addSite('sites');
         
      }
     ngOnDestroy() { }
@@ -86,14 +90,23 @@ export class GeracaoAnaliseDocCmp implements OnInit{
 	
 	public generateAnalysis(idTipoPregunta) {
 		this.dtoGenerateAnalyse.callback = this.form.value['callback'];
+		this.analisys=[];
 
 		for(let site of this.form.value['sites']){
 			this.dtoGenerateAnalyse.sites.push(site.site)
 		}
 		console.log(this.dtoGenerateAnalyse);
+		this._util.showLoader();
         this._util.http({ url: this._utilRutas.GENERATE_ANALISYS, data:this.dtoGenerateAnalyse }).subscribe(
             data => {
-				console.log('Enviando reynaldo');
+				console.log("data");
+				console.log(data);
+				console.log("analisys");
+				this.analisys = data;
+				console.log(this.analisys);
+				this.form.removeControl('sites');
+				this.form.addControl('sites',new FormArray([]));
+				this.addSite('sites');
 
 				let headers = new Headers({ 'Content-Type': 'application/json' });
 				let options = new RequestOptions({ headers: headers });
@@ -103,18 +116,17 @@ export class GeracaoAnaliseDocCmp implements OnInit{
 				console.log( JSON.stringify(jsonPayload));
 				this.http.post(this.dtoGenerateAnalyse.callback, JSON.stringify(jsonPayload), options).subscribe(
 					data=>{
-						console.log('data');
 					},
 					error=>{
 						console.log(error);
 					}
 				);
-				console.log('Finalizo reynaldo');
 
-                this.form.reset();
+			   // this.form.reset();
+			   this._util.hideLoader();
             },
             error => {
-				this.form.reset();
+				this._util.hideLoader();
                 this._util.alerts(error);
             }
         );

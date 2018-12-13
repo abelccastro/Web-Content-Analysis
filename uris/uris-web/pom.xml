@@ -80,12 +80,7 @@
 		</dependency>
     <dependency>
     	<groupId>br.ime.uris</groupId>
-    	<artifactId>uris-dao</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-    	<groupId>br.ime.uris</groupId>
-    	<artifactId>uris-repository</artifactId>
+    	<artifactId>uris-ser</artifactId>
     	<version>0.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>

@@ -19,7 +19,7 @@ export class BaThemeSpinner {
   public showIn():void {
     this._element.style['opacity'] = '0.4';
     this._element.style['display'] = 'block';
-    this.valTime();
+    //this.valTime();
   }
 
   public hide(delay:number = 0):void {

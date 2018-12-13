@@ -29,7 +29,7 @@ import 'rxjs/add/operator/map';
       </div>
     </div>
     <footer class="al-footer clearfix">
-      <div class="al-footer-right">Power By DITUNSA</div>
+      <div class="al-footer-right">Powered By Abel</div>
     </footer>
     <ba-back-top position="200"></ba-back-top>
     `

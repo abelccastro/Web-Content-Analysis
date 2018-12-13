@@ -59,5 +59,16 @@
 			<version>${springframework-version}</version>
 		</dependency>
 		
+		<dependency>
+			<groupId>br.ime.uris</groupId>
+			<artifactId>uris-util</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>br.ime.uris</groupId>
+			<artifactId>uris-domain</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
   </dependencies>
 </project>

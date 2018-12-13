@@ -5,6 +5,8 @@ import { NgaModule } from '../../../core/nga.module';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ModalModule, TabsModule, TooltipModule } from 'ng2-bootstrap';
 import { MyDatePickerModule} from 'mydatepicker';
+import { ProgressbarModule } from 'ngx-bootstrap';
+
 
 /* Rutas */
 import { routing }       from './geracaoAnalise.routing';
@@ -16,10 +18,17 @@ import { GeracaoAnaliseCmp} from './geracaoAnalise/index';
 
 import { UtilConstParam, UtilConstRutas } from './_constantes/index';
 import { UtilConstComunRutas } from "../../comun/_constantes/index";
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { AlertModule } from 'ngx-bootstrap/alert';
+
+
 
 
 @NgModule({
   imports: [
+    ProgressbarModule.forRoot(),
+    AccordionModule.forRoot(),
+    AlertModule.forRoot(),
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
