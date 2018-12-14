@@ -8,5 +8,6 @@ public interface UrlAnalyserSer {
 	
 	List<InformeDto> getInform(List<String> sites);
 	List<InformeDto> getInformFromProject( Integer projectId);
+	List<InformeDto> getInformFromImage(Integer projectId) {
 
 }

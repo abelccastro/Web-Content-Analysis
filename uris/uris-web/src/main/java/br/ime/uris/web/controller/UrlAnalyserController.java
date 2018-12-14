@@ -77,6 +77,24 @@ public class UrlAnalyserController {
         return new ResponseEntity<>(linformeDto, HttpStatus.ACCEPTED);
     }
     
+    @RequestMapping(value = "/imagens", produces=MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST, headers = "Accept=application/json")
+    public ResponseEntity<Object> imagens(@RequestBody Request request)
+    {
+    	if(request.getProjectId()== null){
+    		ProjectDto projectDto = new ProjectDto();
+        	projectDto.setSites(request.getSites());
+        	request.setProjectId(this.projectSer.create(projectDto).getId());
+    	}
+    	
+    	List<InformeDto> linformeDto= this.urlAnalyserSer.getInformFromImage(request.getProjectId());
+    	this.sendInform(linformeDto, request.getCallback());
+        return new ResponseEntity<>(linformeDto, HttpStatus.ACCEPTED);
+    }
+    
+    
+    
+    
+    
     @RequestMapping(value = "/analysisStatus", produces=MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<Object> analysisStatus(@RequestBody Request request)
     {

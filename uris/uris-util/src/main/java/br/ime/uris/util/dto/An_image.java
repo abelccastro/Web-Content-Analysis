@@ -15,7 +15,7 @@ import org.json.JSONObject;
 
 public class An_image {
 	public String imageToAnalyze;	
-	public String subscriptionKey="d7576143ba4947f2a6ded721e1e6e6e3"; 
+	public String subscriptionKey="f209e54355fc4e11afd2e124580cea4f"; 
 	public String uriBase="https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze";
 
 	public An_image(String url_)
@@ -54,8 +54,8 @@ public class An_image {
                 // Format and display the JSON response.
                 String jsonString = EntityUtils.toString(entity);
                 JSONObject json = new JSONObject(jsonString);
-                System.out.println("REST Response:\n");
-                System.out.println(imageToAnalyze);                
+                //System.out.println("REST Response:\n");
+                //System.out.println(imageToAnalyze);                
                 System.out.println(json.get("description").toString());
             }
         } catch (Exception e) {

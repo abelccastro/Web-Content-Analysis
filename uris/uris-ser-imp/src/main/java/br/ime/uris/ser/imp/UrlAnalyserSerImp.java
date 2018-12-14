@@ -11,6 +11,7 @@ import br.ime.uris.repository.persistence.AnalysisRepository;
 import br.ime.uris.ser.RegexSer;
 import br.ime.uris.ser.UrlAnalyserSer;
 import br.ime.uris.util.constant.UtilParams;
+import br.ime.uris.util.dto.An_image;
 import br.ime.uris.util.dto.InformeDto;
 import br.ime.uris.util.dto.RegexDto;
 import br.ime.uris.util.dto.Url;
@@ -123,6 +124,40 @@ public class UrlAnalyserSerImp implements  UrlAnalyserSer {
     	}
 		
 		return linformedto;
+		
+	}
+	@Override
+	public List<InformeDto> getInformFromImage(Integer projectId) {
+    	List<RegexDto> lregexDto = regexSer.getRegex();
+    	List<InformeDto> linformedto= new ArrayList<>();
+    	List<Analysis> sites = this.analysisRepository.getByProject(projectId);    	
+    	
+
+		for (Analysis site:sites) 
+    	{
+			InformeDto informedto= new InformeDto();
+    		Url _url=new Url(site.getUrl());    
+    		Integer status = _url.Connection();
+    		Integer i=0;
+    		if(status != 404){
+	    		List<String> imgs=_url.get_img();
+	    		
+				for (String img:imgs)
+				{
+					System.out.println("----> Analise de imagens: ");
+					if (i<20)
+					{
+						An_image analysis=new An_image(img);
+						System.out.println("image: "+img+" > "+analysis.get_descripcion());
+					}
+					i=i+1;
+				}
+			}
+    		
+    	}
+		
+		return linformedto;
+		
 	}
 
 }
