@@ -488,9 +488,21 @@ INSERT INTO project (pro_id, numero) VALUES (49, NULL);
 -- Data for Name: regex_restriction; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (1, '.*(acompanhante).*', 'topico relacionado a la prostituicion', NULL);
-INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (2, '.*(tabaco|cigarro).*', 'venda de tabaco', NULL);
-
+INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (3, '.*(calibre[1-9]*).*', 'Conteudo de Armas - calibre!', NULL);
+INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (5, '.*(medicamento).*', 'Conteudo de Medicamentos!', NULL);
+INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (6, '.*(cytotec|misoprostol).*', 'Conteudo de Medicanentos Abortivos!', NULL);
+INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (7, '*(cocaina|ecstasy|anfetamina).*', 'Conteudo de drogas sinteticas!', NULL);
+INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (8, '.*(maconha|opio).*', 'Conteudo de Drogas naturais', NULL);
+INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (10, '.*(acompanhante).*(contato).*', 'Conteudo Adulto (nivel 2)', NULL);
+INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (11, '.*(arma|pistola).*(r$).*', 'Conteudo de armas (nivel 2)', NULL);
+INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (12, '.*(magnum).*', 'Conteudo de armas (nivel 2)', NULL);
+INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (9,  '.*(arma |pistola|ak 47|revólver).*', 'Conteudo de Armas', NULL);
+INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (13, '.*(acompanhante).*(modelo).*(gata).*(celular).*', 'Conteudo Adulto! (nivel 4)', NULL);
+INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (14, '.*(acompanhante).*(modelo).*(gata).*	', 'Conteudo Adulto! (nivel 3)', NULL);
+INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (15, '.*(acompanhante|modelo).*(acompanhante|modelo).*(acompanhante|modelo).*(acompanhante|modelo).*', 'Conteudo Adulto! (nivel 5)', NULL);
+INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (16, '.*(encontro).*(garota|acompanhamento).*', 'Conteudo Adulto (nivel 2)!', NULL);
+INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (1, '.*(tabaco|cigarro).*', 'Conteudo de Tabaco!', NULL);
+INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (2, '.*(acompanhante).*', 'Conteudo Adulto!', NULL);
 
 --
 -- TOC entry 2004 (class 0 OID 74943)
