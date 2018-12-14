@@ -116,7 +116,7 @@ public class UrlAnalyserSerImp implements  UrlAnalyserSer {
     		else {
     			site.setvalidated(false);
 	    		this.analysisRepository.saveAndFlush(site);
-	    		informedto.set(site.getUrl(), false,"Paginas no existen!!! error 404!!!");
+	    		informedto.set(site.getUrl(), false,"Pagina web nao existe (Error: 404) ou  formato incorreto da url!!!");
 	    		linformedto.add(informedto);
     		}
     		

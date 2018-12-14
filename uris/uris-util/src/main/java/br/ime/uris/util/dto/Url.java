@@ -18,6 +18,7 @@ public class Url {
 	{
 		url=url_;
 	}
+	@SuppressWarnings("finally")
 	public int Connection() 
 	{
 		Response response;
@@ -27,8 +28,8 @@ public class Url {
 			System.out.println(response.statusCode() + " : " + response.url());
 			return response.statusCode();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
+		} finally{
 			return 404;
 		}
 	}
