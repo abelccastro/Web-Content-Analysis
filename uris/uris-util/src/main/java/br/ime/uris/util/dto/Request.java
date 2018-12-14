@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Request {
 	List<String> sites;
+	Integer projectId;
 	String callback;
 	
 	public List<String> getSites() {
@@ -17,6 +18,12 @@ public class Request {
 	}
 	public void setCallback(String callback) {
 		this.callback = callback;
+	}
+	public Integer getProjectId() {
+		return projectId;
+	}
+	public void setProjectId(Integer projectId) {
+		this.projectId = projectId;
 	}
 	
 }

@@ -15,6 +15,9 @@ public class StatusSite {
 	
 	@Column(name="nombre")
 	private String name;
+	
+	@Column(name="style")
+	private String style;
 
 	public Integer getId() {
 		return id;
@@ -31,4 +34,13 @@ public class StatusSite {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public String getStyle() {
+		return style;
+	}
+
+	public void setStyle(String style) {
+		this.style = style;
+	}
+		
 }
