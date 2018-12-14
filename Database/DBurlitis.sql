@@ -491,7 +491,7 @@ INSERT INTO project (pro_id, numero) VALUES (49, NULL);
 INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (3, '.*(calibre[1-9]*).*', 'Conteudo de Armas - calibre!', NULL);
 INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (5, '.*(medicamento).*', 'Conteudo de Medicamentos!', NULL);
 INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (6, '.*(cytotec|misoprostol).*', 'Conteudo de Medicanentos Abortivos!', NULL);
-INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (7, '*(cocaina|ecstasy|anfetamina).*', 'Conteudo de drogas sinteticas!', NULL);
+INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (7, '.*(cocaina|ecstasy|anfetamina).*', 'Conteudo de drogas sinteticas!', NULL);
 INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (8, '.*(maconha|opio).*', 'Conteudo de Drogas naturais', NULL);
 INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (10, '.*(acompanhante).*(contato).*', 'Conteudo Adulto (nivel 2)', NULL);
 INSERT INTO regex_restriction (reg_res_id, description, rule, res_id) VALUES (11, '.*(arma|pistola).*(r$).*', 'Conteudo de armas (nivel 2)', NULL);
