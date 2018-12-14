@@ -40,6 +40,7 @@ public class ProjectSerImp implements ProjectSer{
 			Analysis analysis = new Analysis();
 			analysis.setProjectId(projectDto.getId());
 			analysis.setUrl(site);
+			analysis.setvalidated(true);
 			analysis.setStatusId(UtilParams.STATUS_SITE_WAITING);
 			
 			this.analysisRepository.save(analysis);

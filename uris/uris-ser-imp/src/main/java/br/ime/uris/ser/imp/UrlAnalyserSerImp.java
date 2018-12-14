@@ -73,24 +73,53 @@ public class UrlAnalyserSerImp implements  UrlAnalyserSer {
     	
     	List<Analysis> sites = this.analysisRepository.getByProject(projectId);
     	
+
 		for (Analysis site:sites) 
     	{
+			InformeDto informedto= new InformeDto();
     		Url _url=new Url(site.getUrl());    
-    		_url.Connection();
-    		String texto=_url.get_text().toLowerCase();
+    		Integer status = _url.Connection();
     		
-    		for (int j = 0; j < lregexDto.size(); j++) 
-        	{
-    			if (texto.matches(lregexDto.get(j).getDescription()))
-    			{			
-    				InformeDto _linformedto= new InformeDto();    		    	
-    				_linformedto.set(site.getUrl(), true,lregexDto.get(j).getMsg());
-    				linformedto.add(_linformedto);
-    				site.setRestricted(Boolean.TRUE);
-    			}
-        	}
-    		site.setStatusId(UtilParams.STATUS_SITE_PROCESSED);
-    		this.analysisRepository.saveAndFlush(site);
+    		if(status != 404){
+	    		String texto=_url.get_text().toLowerCase();
+	    		if (texto=="!")
+					texto=_url.get_html().toLowerCase();
+	    		
+				Boolean existe=false;
+
+				if (texto!="!"){
+		    		for (int j = 0; j < lregexDto.size(); j++) 
+		        	{
+		    			if (texto.matches(lregexDto.get(j).getDescription()))
+		    			{			
+		    				informedto.set(site.getUrl(), true,lregexDto.get(j).getMsg());
+		    				site.setRestricted(Boolean.TRUE);
+				        	existe=true;
+		    			}
+		        	}
+				}
+				
+				if (existe==true)
+				{						
+    				linformedto.add(informedto);
+				}
+				else
+				{
+					informedto.setUrlResponse(site.getUrl(), false);
+    				linformedto.add(informedto);
+				}
+	    		
+	    		
+	    		site.setStatusId(UtilParams.STATUS_SITE_PROCESSED);
+	    		this.analysisRepository.saveAndFlush(site);
+    		}
+    		else {
+    			site.setvalidated(false);
+	    		this.analysisRepository.saveAndFlush(site);
+	    		informedto.set(site.getUrl(), false,"Paginas no existen!!! error 404!!!");
+	    		linformedto.add(informedto);
+    		}
+    		
     	}
 		
 		return linformedto;

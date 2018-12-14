@@ -12,6 +12,9 @@ public class AnalysisDto {
 	
 	private Boolean validated;
 	
+	private Integer statusId;
+
+	
 	public String getUrl() {
 		return url;
 	}
@@ -50,5 +53,13 @@ public class AnalysisDto {
 
 	public void setValidated(Boolean validated) {
 		this.validated = validated;
+	}
+
+	public Integer getStatusId() {
+		return statusId;
+	}
+
+	public void setStatusId(Integer statusId) {
+		this.statusId = statusId;
 	}
 }

@@ -12,12 +12,15 @@ public class AnaSta {
 	
 	private Boolean validated;
 	
-	public AnaSta(String url, Boolean restricted, String statusDescription, String style, Boolean validated) {
+	private Integer statusId;
+	
+	public AnaSta(String url, Boolean restricted, String statusDescription, String style, Boolean validated, Integer statusId) {
 		this.url = url;
 		this.restricted = restricted;
 		this.statusDescription = statusDescription;
 		this.style = style;
 		this.validated = validated;
+		this.statusId = statusId;
 	}
 
 	public String getUrl() {
@@ -58,6 +61,14 @@ public class AnaSta {
 
 	public void setValidated(Boolean validated) {
 		this.validated = validated;
+	}
+
+	public Integer getStatusId() {
+		return statusId;
+	}
+
+	public void setStatusId(Integer statusId) {
+		this.statusId = statusId;
 	}
 	
 }

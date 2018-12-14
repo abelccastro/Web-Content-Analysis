@@ -34,6 +34,13 @@ public class InformeDto {
 		this.restrict = restrict;
 		this.addReason(reason);
 	}
+	
+	public void setUrlResponse(String url,Boolean restrict)
+	{
+		this.url=url;
+		this.restrict = restrict;
+	}
+	
 	public void addReason(String reason)
 	{
 		this.reasons.add(reason);

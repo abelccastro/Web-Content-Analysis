@@ -14,6 +14,6 @@ public interface AnalysisRepository extends JpaRepository<Analysis, Integer> {
 	@Query("from Analysis a where a.projectId = :projectId")
 	List<Analysis> getByProject(@Param("projectId") Integer id);
 	
-	@Query("select new br.ime.uris.repository.query.AnaSta(a.url, a.restricted, s.name, s.style, a.validated) from Analysis a, StatusSite s where a.statusId = s.id AND a.projectId = :projectId")
+	@Query("select new br.ime.uris.repository.query.AnaSta(a.url, a.restricted, s.name, s.style, a.validated , a.statusId) from Analysis a, StatusSite s where a.statusId = s.id AND a.projectId = :projectId")
 	List<AnaSta> getWithAnalysis(@Param("projectId") Integer projectId);
 }
